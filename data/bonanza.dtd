@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT order (customer, order_type, burgers, special)>
+
+<!ELEMENT customer (#PCDATA)>
+
+<!ATTLIST order 
+	type (eatin|takeout|delivery) #REQUIRED
+>
+
+<!ELEMENT delivery (#PCDATA)>
+
+<!ELEMENT special (#PCDATA)>
+
+<!ELEMENT burger (#PCDATA)>
+<!ELEMENT burger (patty, cheeses, toppings, sauces, instructions?, name?)>
+
+<!ELEMENT patty (#PCDATA)>
+<!ATTLIST patty
+	type (beef|pork|turkey|bison|vege) "beef"
+>
+
+<!ELEMENT cheese (#EMPTY)>
+<!ATTLIST cheeses
+	top (american|swiss|jack|blue|gruyere|gouda|aged|goat|brie) #IMPLIED
