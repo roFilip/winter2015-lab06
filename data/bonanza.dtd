@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!ELEMENT order (customer, order_type, burgers, special)>
+<!ELEMENT order (customer, delivery?, burger+, special?)>
 
 <!ELEMENT customer (#PCDATA)>
 
@@ -13,13 +13,29 @@
 <!ELEMENT special (#PCDATA)>
 
 <!ELEMENT burger (#PCDATA)>
-<!ELEMENT burger (patty, cheeses, toppings, sauces, instructions?, name?)>
+<!ELEMENT burger (patty, cheeses?, topping*, sauce*, instructions?, name?)>
 
 <!ELEMENT patty (#PCDATA)>
 <!ATTLIST patty
 	type (beef|pork|turkey|bison|vege) "beef"
 >
 
-<!ELEMENT cheese (#EMPTY)>
+<!ELEMENT cheese EMPTY>
 <!ATTLIST cheeses
 	top (american|swiss|jack|blue|gruyere|gouda|aged|goat|brie) #IMPLIED
+        bottom (american|swiss|jack|blue|gruyere|gouda|aged|goat|brie) #IMPLIED
+>
+
+<!ELEMENT topping (#PCDATA)>
+<!ATTLIST topping
+    type    (lettuce|tomato|raw|dill|roasted|shrooms|salsa|bacon|chilies|fkchili|avocado|egg|porkbelly) #REQUIRED
+>
+
+<!ELEMENT sauce EMPTY>
+<!ATTLIST sauce
+    type    (ketchup|mustard|mayo|fksauce) #REQUIRED
+>
+
+<!ELEMENT instructions (#PCDATA)>
+
+<!ELEMENT name (#PCDATA)>
